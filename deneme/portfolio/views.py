@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return render(request, "index.html")
+    return render(request, "index.html", {"name": ["h", "j", "f", "h", "w", "q", "q", "a"]})
 
 
 def welcome(request):
