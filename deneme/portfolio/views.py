@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-
-# Create your views here.
+from .models import User
 
 
 def home(request):
-    return render(request, "index.html", {"name": ["h", "j", "f", "h", "w", "q", "q", "a"]})
+    if request.method == "POST":
+        try:
+            user = User.objects.get(user_name=request.post("username"))
+        except :
+            return HttpResponse("<h1>Not Found</h1>")
+    return render(request, "login.html")
 
 
 def welcome(request):
