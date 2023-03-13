@@ -1,6 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from .models import User
+from django.shortcuts import render, redirect
+from django.contrib import messages
 
 
 def home(request):
@@ -11,5 +10,9 @@ def login(request):
     return render(request, "login.html")
 
 
-def welcome(request):
-    return HttpResponse("welcome")
+def register(request):
+    if request.method == "POST":
+        data = request.POST
+
+        redirect('register')
+    return render(request, "register.html")
