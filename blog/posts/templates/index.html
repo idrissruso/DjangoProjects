@@ -1,52 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>İdriss's Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
-        /* Set a full height background image */
-        .bg-image {
-            background-image: url("https://images.pexels.com/photos/6893329/pexels-photo-6893329.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+	<title>Idris's Blog</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<style>
+        .card{
+            margin : 10px;
         }
-    </style>
+		.bg-image {
+			background-image: url('{% static 'images/image.jpg' %}');
+			background-size: cover;
+			background-position: center center;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			font-size: 3rem;
+			font-weight: bold;
+			text-shadow: 2px 2px 4px #000000;
+		}
+	</style>
 </head>
 <body>
+	<div class="bg-image">
+		<p>Idris's Blog</p>
+	</div>
+	<div class="container mt-5">
+		<div class="row">
+            {% for post in posts %}
+			<div class="col-md-4">
+		
+      <div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Post 1</h5>
+						<p class="card-text">Author: John Doe</p>
+						<p class="card-text">Date: March 20, 2023</p>
+            <div class="col-md-12">
+      				<a href="#" class="btn btn-primary">Add New Post</a>
+      			</div>
+					</div>
+				</div>
+    
+			</div>
+			{% endfor %}
 
-<!-- Full height background image -->
-<div class="bg-image"></div>
-
-<!-- Page content -->
-<div class="container text-white">
-    <h1>İdriss's Blog</h1>
-    <hr>
-    <!-- Blog post section -->
-    <div class="row">
-        {% for post in posts %}
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">{{ post.content }}</p>
-                    <a href="#" class="btn btn-primary">Read more</a>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    <!-- Button to add new post -->
-    <div class="text-center">
-        <a href="#" class="btn btn-primary">Add new post</a>
-    </div>
-</div>
-
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-12">
+				<a href="#" class="btn btn-primary">Add New Post</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
