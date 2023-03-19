@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #F5F5F5;
+    }
+
+    .login-form {
+      margin-top: 50px;
+      max-width: 350px;
+      background-color: #FFFFFF;
+      border-radius: 5px;
+      padding: 30px;
+      box-shadow: 0px 0px 10px #CCCCCC;
+    }
+
+    .login-form h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      border-radius: 3px;
+    }
+
+    .btn-login {
+      background-color: #27AE60;
+      color: #FFFFFF;
+      border-radius: 3px;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+    } 
+
+    .btn-login:hover {
+      background-color: #219653;
+    }
+
+    .forgot-password {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="login-form">
+          <h2>Login</h2>
+          <form method = "POST" action = "{% url 'login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label>User Name</label>
+              <input type="text" class="form-control" name = "username" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control"  name = "password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-login">Login</button>
+            <div class="forgot-password">
+              <a href="#">Forgot password?</a><br>
+              {% for message in messages %}
+              <span style = "color : red;">{{message}}</span>
+              {% endfor %}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
