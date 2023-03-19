@@ -8,6 +8,18 @@ def home(request):
 
 
 def login(request):
+    if request.method == "POST":
+        data = request.POST
+        user = auth.authenticate(username=data["email"], password=data["password"])
+        print(user)
+        if user is not None:
+            auth.login(request=request, user=user)
+            print("1")
+            return redirect("/")
+        else:
+            messages.info(request, "İnvalid Credentials")
+            print("2")
+            return redirect("login")
     return render(request, "login.html")
 
 
@@ -17,18 +29,17 @@ def register(request):
         if data["password"] == data["Confirm Password"]:
             if User.objects.filter(email=data["email"]).exists():
                 messages.info(request, "Email already in use")
-                redirect('register')
+                return redirect('register')
             if User.objects.filter(username=data["username"]).exists():
                 messages.info(request, "User Name already in use")
-                redirect('register')
+                return redirect('register')
             else:
                 new_user = User.objects.create_user(username=data["username"], email=data["email"],
                                                     password=data["password"])
                 new_user.save()
-                redirect('register')
+                return redirect("login")
         else:
             messages.info(request, "Password not matched")
-            redirect('register')
+            return redirect('register')
 
-        redirect('register')
     return render(request, "register.html")
