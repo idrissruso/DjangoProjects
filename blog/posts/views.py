@@ -4,7 +4,8 @@ from .models import Posts
 
 # Create your views here.
 def home(request):
-    return render(request,'index.html',{"posts" : [1,2,3,4,5]})
+    posts = Posts.objects.all()
+    return render(request,'index.html',{"posts" : posts})
 
 def addPost(request):
     if request.method == "POST":

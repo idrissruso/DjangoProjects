@@ -39,9 +39,9 @@
 		
       <div class="card">
 					<div class="card-body">
-						<h5 class="card-title">Post 1</h5>
-						<p class="card-text">Author: John Doe</p>
-						<p class="card-text">Date: March 20, 2023</p>
+						<h5 class="card-title">{{post.title}}</h5>
+						<p class="card-text">{{post.author}}</p>
+						<p class="card-text">{{post.time}}</p>
             <div class="col-md-12">
       				<a href="{% url 'new_post' %}" class="btn btn-primary">Add New Post</a>
       			</div>
