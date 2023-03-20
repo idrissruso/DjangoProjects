@@ -7,5 +7,5 @@ def home(request):
 def addPost(request):
     return render(request,'newpost.html')
 
-def post(request):
+def post(request,id):
     return render(request,'post.html')
