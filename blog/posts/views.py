@@ -16,4 +16,5 @@ def addPost(request):
     return render(request,'newpost.html')
 
 def post(request,id):
-    return render(request,'post.html')
+    post = Posts.objects.get(id = id)
+    return render(request,'post.html',{"post" : post})
