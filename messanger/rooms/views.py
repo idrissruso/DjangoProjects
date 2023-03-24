@@ -13,3 +13,6 @@ def register(request):
 
 def chat(request,room):
     return render(request,'chat.html')
+
+def room(request):
+    return render(request,'rooms.html')
