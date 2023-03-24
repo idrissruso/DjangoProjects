@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+      /* Style the home page buttons */
+      .home-page-button {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        border-radius: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>My App</h4>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="text-center">
+            <p>Welcome to My App!</p>
+            <button class="btn btn-lg btn-primary home-page-button" id="login-button">Login</button>
+            <button class="btn btn-lg btn-success home-page-button" id="register-button">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Load Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+      // Add event listeners to the login and register buttons
+      document.getElementById("login-button").addEventListener("click", function() {
+        window.location.href = "login.html";
+      });
+      document.getElementById("register-button").addEventListener("click", function() {
+        window.location.href = "register.html";
+      });
+    </script>
+  </body>
+</html>

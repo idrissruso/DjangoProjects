@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WhatsApp UI</title>
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+      /* Style the chat window */
+      .chat-window {
+        height: 500px;
+        border: 1px solid #ddd;
+        overflow-y: scroll;
+      }
+      
+      /* Style the chat bubbles */
+      .chat-bubble {
+        max-width: 75%;
+        display: block; /* Add display block to move the chat bubbles to the next line */
+        margin-bottom: 10px;
+        position: relative;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      
+      /* Style the user's chat bubbles */
+      .chat-bubble.user {
+        background-color: #dcf8c6;
+        float: right;
+      }
+      
+      /* Style the recipient's chat bubbles */
+      .chat-bubble.recipient {
+        background-color: #fff;
+        float: left;
+      }
+      
+      /* Style the chat input */
+      .chat-input {
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        padding: 10px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>WhatsApp</h4>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="card chat-window">
+            <div class="card-body">
+              <div class="chat-bubble recipient">
+                Hello, how are you?
+              </div>
+              <div class="chat-bubble user">
+                I'm good, thanks for asking. How about you?
+              </div>
+              <div class="chat-bubble recipient">
+                I'm doing well too. Do you want to hang out this weekend?
+              </div>
+              <div class="chat-bubble user">
+                Sure, let's do it.
+              </div>
+            </div>
+          </div>
+          <form>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control chat-input" placeholder="Type your message here...">
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Load Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
