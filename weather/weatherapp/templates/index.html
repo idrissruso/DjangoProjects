@@ -16,24 +16,32 @@
     <div class="container-fluid mt-5">
       <div class="row justify-content-center">
         <div class="col-sm-6">
+          <form method = "POST" action = "{% url 'home' %}">
+            {% csrf_token %}
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter location...">
+            <input type="text" class="form-control" name = "city" placeholder="Enter location...">
             <div class="input-group-append">
-              <button class="btn btn-primary" type="button">Search</button>
+              <button class="btn btn-primary" type="submit">Search</button>
             </div>
           </div>
+        </form>
         </div>
 
       </div>
 			<div class="row justify-content-center mt-5">
+        {% if data %}
         <div class="col-sm-6">
-          <h1 class="text-center mb-4" id="city">Bujumbura</h1>
-          <h3 class="mb-4" id="country">Country Code : BDI</h4>
-          <h6 class="text-left mb-4" id="temperature">Temperature : 32 cel</h4>
-          <h6 class="text-left mb-4" id="pressure">Pressure : 34</h4>
-          <h6 class="text-left mb-4" id="humidity">Humidity : 234</h4>
-          <h6 class="text-left mb-4" id="coordinates">Coordinates : 23'4</h4>
+          <h1 class="text-center mb-4" id="city">{{data.city}}</h1>
+          <h3 class="mb-4" id="country">Country Code : {{data.city_code}}</h4>
+          <h6 class="text-left mb-4" id="temperature">Temperature : {{data.temperature}} cel</h4>
+          <h6 class="text-left mb-4" id="pressure">Pressure : {{data.pressure}}</h4>
+          <h6 class="text-left mb-4" id="humidity">Humidity : {{data.humidity}}</h4>
+          <h6 class="text-left mb-4" id="coordinates">Coordinates : {{data.coordinates}}</h4>
+            <i class="wi wi-owm-{{ data.imoji }}"></i>
         </div>
+        {% else %}
+          <h1>{{error}}</h1>
+        {% endif %}
       </div>
     </div>
   </body>
