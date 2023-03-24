@@ -22,21 +22,25 @@
       </div>
       <div class="row">
         <div class="col-md-6 offset-md-3">
-          <form id="register-form">
+          <form id="register-form" method = "POST" action = "{% url 'register' %}">
+            {% csrf_token %}
             <h2 class="text-center mb-4">Register</h2>
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Full Name" required>
+              <input type="text" class="form-control" name = "username" placeholder="User Name" required>
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email" required>
+              <input type="email" class="form-control" name = "email" placeholder="Email" required>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Password" required>
+              <input type="password" class="form-control" name = "password" placeholder="Password" required>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Confirm Password" required>
+              <input type="password" class="form-control" name = "c_password" placeholder="Confirm Password" required>
             </div>
-            <div class="form-group">
+            <div class="form-group-center" style = "text-align : center;">
+              {% for message in messages %}
+              <h5><i style = "color : red;">* {{message}}</i></h5>
+              {% endfor %}
               <button type="submit" class="btn btn-lg btn-primary btn-block">Sign Up</button>
             </div>       
           </form>

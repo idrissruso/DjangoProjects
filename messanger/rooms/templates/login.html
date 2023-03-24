@@ -22,15 +22,19 @@
       </div>
       <div class="row">
         <div class="col-md-6 offset-md-3">
-          <form id="login-form">
+          <form id="login-form" method = "POST" action = "{% url 'login' %}">
+            {% csrf_token %}
             <h2 class="text-center mb-4">Login</h2>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email" required>
+              <input type="text" class="form-control"name = "username" placeholder="Email" required>
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" placeholder="Password" required>
+              <input type="password" class="form-control" name = "password" placeholder="Password" required>
             </div>
             <div class="form-group">
+              {% for message in messages %}
+              <h5><i style = "color : red;">* {{message}}</i></h5>
+              {% endfor %}
               <button type="submit" class="btn btn-lg btn-primary btn-block">Sign In</button>
             </div>
             <div class="clearfix">
