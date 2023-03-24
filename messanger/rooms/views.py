@@ -16,7 +16,7 @@ def login_view(request):
         user = authenticate(username = data["username"],password = data["password"])
         if user is not None:
             login(request,user)
-            return render(request,"rooms.html")
+            return redirect('rooms')
         else:
             messages.info(request,"İnvalid credentials")
     return render(request,'login.html')
@@ -43,10 +43,16 @@ def register(request):
 def chat(request,room):
     return render(request,'chat.html')
 
+
 @login_required
 def rooms(request):
-    rooms = models.Room.objects.all()
-    return render(request,'rooms.html',{"rooms" : [10,1,3]})
+    rooms_ = models.Room.objects.all()
+    return render(request,'rooms.html',{"rooms" : rooms_})
 
 def new_room(request):
+    if request.method == "POST":
+        data = request.POST
+        room = models.Room(name = data["name"],description = data["description"])
+        room.save()
+        return redirect("rooms")
     return render(request,'new_room.html')
