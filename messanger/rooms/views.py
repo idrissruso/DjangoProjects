@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
+from django.contrib.auth.decorators import login_required
+from . import models
 
 # Create your views here.
 
@@ -41,8 +43,10 @@ def register(request):
 def chat(request,room):
     return render(request,'chat.html')
 
-def room(request):
-    return render(request,'rooms.html')
+@login_required
+def rooms(request):
+    rooms = models.Room.objects.all()
+    return render(request,'rooms.html',{"rooms" : [10,1,3]})
 
 def new_room(request):
     return render(request,'new_room.html')

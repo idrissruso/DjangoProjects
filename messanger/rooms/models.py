@@ -7,6 +7,7 @@ from django.utils.timezone import now
 class Room(models.Model):
     name = models.CharField(max_length=150)
     description = models.CharField(max_length=500)
+    time = models.DateTimeField(default= now)
     
 class Message(models.Model):
     content = models.CharField(max_length=10000)
