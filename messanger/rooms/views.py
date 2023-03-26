@@ -40,8 +40,17 @@ def register(request):
             return redirect("register")
     return render(request,'register.html')
 
-def chat(request,room):
-    return render(request,'chat.html')
+@login_required
+def chat(request, room):
+    room = models.Room.objects.get(id=int(room))
+    if request.method == "POST":
+        data = request.POST
+        message = models.Message(room = room,user = request.user,content = data["message"])
+        message.save()
+        return redirect("chat",room = room.id)
+    messages = models.Message.objects.filter(room=room)
+    return render(request, 'chat.html', {"messages": messages,"room" : room})
+
 
 
 @login_required
@@ -49,6 +58,7 @@ def rooms(request):
     rooms_ = models.Room.objects.all()
     return render(request,'rooms.html',{"rooms" : rooms_})
 
+@login_required
 def new_room(request):
     if request.method == "POST":
         data = request.POST
