@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from . import models
 
@@ -66,3 +66,7 @@ def new_room(request):
         room.save()
         return redirect("rooms")
     return render(request,'new_room.html')
+
+def logout_(request):
+    logout(request)
+    return render(request,"index.html")
